@@ -1,6 +1,14 @@
 /* Charity: water Brand Colors
 
-Primary Colors:
+/* Standardized Breakpoints */
+:root {
+    --breakpoint-sm: 576px;
+    --breakpoint-md: 768px;
+    --breakpoint-lg: 992px;
+    --breakpoint-xl: 1200px;
+}
+
+/* Primary Colors:
 - Yellow:     #FFC907
 - Blue:       #2E9DF7
 
@@ -39,14 +47,14 @@ body {
 }
 
 .score-panel {
-    display: flex;
-    justify-content: space-between;  /* Space between score and button */
-    align-items: center;
-    width: 800px;
-    padding: 10px;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    background: rgba(255, 255, 255, 0.8);
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-size: 18px;
+    color: #333;
 }
 
 #game-container {
