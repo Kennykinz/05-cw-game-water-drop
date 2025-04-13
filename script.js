@@ -1,23 +1,30 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const startBtn = document.getElementById('start-game-btn');
-    const restartBtn = document.getElementById('restart-game-btn');
-    const scoreDisplay = document.getElementById('score');
-    const finalScoreDisplay = document.getElementById('final-score');
+    const startGameBtn = document.getElementById('start-game-btn');
+    const restartGameBtn = document.getElementById('restart-game-btn');
     const welcomePrompt = document.getElementById('welcome-prompt');
     const gameOverPrompt = document.getElementById('game-over-prompt');
+    const gameContainer = document.getElementById('game-container');
+    const scoreDisplay = document.getElementById('score');
+    const finalScoreDisplay = document.getElementById('final-score');
+
     let score = 0;
     let dirtyDropletCount = 0;
     const dirtyDropletLimit = 5;
+    let gameInterval;
+    let gameActive = false;
+
+    // Show the welcome prompt on page load
+    showWelcomePrompt();
 
     // Start Game
-    startBtn.addEventListener('click', () => {
-        welcomePrompt.classList.add('hidden');
+    startGameBtn.addEventListener('click', () => {
+        hideWelcomePrompt();
         startGame();
     });
 
     // Restart Game
-    restartBtn.addEventListener('click', () => {
-        gameOverPrompt.classList.add('hidden');
+    restartGameBtn.addEventListener('click', () => {
+        hideGameOverPrompt();
         resetGame();
         startGame();
     });
@@ -27,22 +34,20 @@ document.addEventListener('DOMContentLoaded', () => {
         dirtyDropletCount = 0;
         updateScore();
         gameActive = true;
-        startBtn.disabled = true;
-        gameInterval = setInterval(createDrop, 1000);
+        gameInterval = setInterval(createDrop, 1000); // Start spawning drops
     }
 
     function endGame() {
-        finalScoreDisplay.textContent = score;
-        gameOverPrompt.classList.remove('hidden');
         gameActive = false;
         clearInterval(gameInterval);
+        finalScoreDisplay.textContent = score;
+        showGameOverPrompt();
     }
 
     function resetGame() {
         score = 0;
         dirtyDropletCount = 0;
         updateScore();
-        const gameContainer = document.getElementById('game-container');
         while (gameContainer.firstChild) {
             gameContainer.removeChild(gameContainer.firstChild);
         }
@@ -50,6 +55,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function updateScore() {
         scoreDisplay.textContent = score;
+    }
+
+    function showWelcomePrompt() {
+        welcomePrompt.classList.remove('hidden');
+    }
+
+    function hideWelcomePrompt() {
+        welcomePrompt.classList.add('hidden');
+    }
+
+    function showGameOverPrompt() {
+        gameOverPrompt.classList.remove('hidden');
+    }
+
+    function hideGameOverPrompt() {
+        gameOverPrompt.classList.add('hidden');
     }
 
     // Example: Increment score
@@ -69,24 +90,14 @@ document.addEventListener('DOMContentLoaded', () => {
     // Function to create and manage individual water drops
     function createDrop() {
         const drop = document.createElement('div');
-        
-        // Randomly determine if this drop is good or bad (20% chance of bad)
-        const isBadDrop = Math.random() < 0.2;
+        const isBadDrop = Math.random() < 0.2; // 20% chance of bad drop
         drop.className = isBadDrop ? 'water-drop bad-drop' : 'water-drop';
-        
-        // Create random size variation for visual interest
-        const scale = 0.8 + Math.random() * 0.7;  // Results in 80% to 150% of original size
-        drop.style.transform = `scale(${scale})`;
-        
-        // Position drop randomly along the width of the game container
-        const gameWidth = document.getElementById('game-container').offsetWidth;
+
+        const gameWidth = gameContainer.offsetWidth;
         const randomX = Math.random() * (gameWidth - 40);
         drop.style.left = `${randomX}px`;
-        
-        // Set drop animation speed
         drop.style.animationDuration = '4s';
-        
-        // Click handler to collect drops
+
         drop.addEventListener('click', () => {
             drop.remove();
             if (isBadDrop) {
@@ -95,11 +106,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 collectCleanDroplet();
             }
         });
-        
-        // Add drop to game container
-        document.getElementById('game-container').appendChild(drop);
-        
-        // Remove drop if it reaches bottom without being clicked
+
+        gameContainer.appendChild(drop);
+
         drop.addEventListener('animationend', () => {
             drop.remove();
             if (isBadDrop) {

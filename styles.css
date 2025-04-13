@@ -1,4 +1,4 @@
-/* Charity: water Brand Colors
+/* Charity: water Brand Colors */
 
 /* Standardized Breakpoints */
 :root {
@@ -19,7 +19,6 @@ Secondary Colors:
 - Red:        #F5402C
 - Dark Green: #159A48
 - Pink:       #F16061
-
 */
 
 * {
@@ -36,7 +35,6 @@ body {
     background: linear-gradient(to bottom, #87CEEB, #4682B4);
     font-family: Arial, sans-serif;
     margin: 0;
-    overflow: hidden;
 }
 
 .game-wrapper {
@@ -67,6 +65,16 @@ body {
     overflow: hidden;
 }
 
+#collector {
+    width: 100px;
+    height: 60px;
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: url('./bucket.png') no-repeat center;
+    background-size: contain;
+}
 
 #start-btn {
     padding: 8px 16px;
@@ -94,7 +102,7 @@ body {
     border-radius: 50%;
     position: absolute;
     background: radial-gradient(circle, #00BFFF, #1E90FF);
-    animation: fall linear;
+    animation: fall 2s linear;
     cursor: pointer;
     pointer-events: auto;
 }
@@ -107,7 +115,7 @@ body {
     color: #131313;
     font-size: 48px;
     margin-top: 0;
-    margin-bottom: 5px;  /* reduced from 20px */
+    margin-bottom: 5px;
     text-align: center;
 }
 
@@ -127,7 +135,7 @@ body {
     }
 }
 
-@media (max-width: 850px) {
+@media (max-width: var(--breakpoint-lg)) {
     .game-wrapper, .score-panel, #game-container {
         width: 95vw;
     }
@@ -135,4 +143,38 @@ body {
     #game-container {
         height: 70vh;
     }
+}
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.prompt h2 {
+font-size: 36px;
+color: #FF4500;
+
+.prompt p {
+    font-size: 24px;
+    color: #333;
+}
+    font-size: 36px;
+    color: #FF4500;
+}
+
+#game-over-prompt p {
+    font-size: 24px;
+    color: #333;
+}
+
+.hidden {
+    display: none;
 }
