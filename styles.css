@@ -25,8 +25,10 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background-color: #f0f0f0;
+    background: linear-gradient(to bottom, #87CEEB, #4682B4);
     font-family: Arial, sans-serif;
+    margin: 0;
+    overflow: hidden;
 }
 
 .game-wrapper {
@@ -79,19 +81,18 @@ body {
 }
 
 .water-drop {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
     position: absolute;
-    width: 40px;  /* increased from 30px */
-    height: 40px; /* increased from 30px */
-    background-color: #0099ff;
-    border-radius: 50% 50% 50% 50%;
-    animation: dropFall linear forwards;
-    transform-origin: center;
+    background: radial-gradient(circle, #00BFFF, #1E90FF);
+    animation: fall linear;
     cursor: pointer;
     pointer-events: auto;
 }
 
 .bad-drop {
-    background-color: #ff4444;
+    background: radial-gradient(circle, #8B4513, #A0522D);
 }
 
 .game-title {
@@ -109,12 +110,12 @@ body {
     text-align: center;
 }
 
-@keyframes dropFall {
+@keyframes fall {
     from {
-        transform: translateY(-20px);
+        top: -50px;
     }
     to {
-        transform: translateY(600px);
+        top: 100%;
     }
 }
 
