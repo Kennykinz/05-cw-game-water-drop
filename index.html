@@ -5,9 +5,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Water Drop Game</title>
     <link rel="stylesheet" href="styles.css">
+    <style>
+        :root {
+            --yellow: #FFD700; /* Define yellow color */
+            --black: #000000; /* Define black color */
+        }
+
+        .donation-link {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 16px;
+            color: var(--black); /* Black text */
+            font-family: 'Arial', sans-serif;
+        }
+
+        .donation-link a {
+            color: var(--yellow); /* Yellow link */
+            font-weight: bold;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .donation-link a:hover {
+            color: var(--black); /* Black text on hover */
+        }
+    </style>
 </head>
 <body>
     <div class="game-wrapper">
+        <img src="images/cw-logo.jpg" alt="Charity:Water Logo" class="cw-logo">
         <h1 class="game-title">Water Drop</h1>
         <p class="game-tagline">Catch the good drops, avoid the bad ones!</p>
         <div class="score-panel">
@@ -23,7 +49,7 @@
     <div id="welcome-prompt" class="modal">
         <div class="modal-content">
             <h2>Welcome to Water Drop!</h2>
-            <p>Charity:Water’s mission is to bring clean and safe drinking water to people in developing countries. Play this game to learn more and have fun!</p>
+            <p>charity:water’s mission is to bring clean and safe drinking water to people in developing countries. Play this game to learn more and have fun!</p>
             <button id="start-game-btn">Start Game</button>
         </div>
     </div>
@@ -32,8 +58,21 @@
         <div class="modal-content">
             <h2>Game Over!</h2>
             <p>Your final score: <span id="final-score">0</span></p>
-            <button id="restart-game-btn">Restart Game</button>
+            <p class="charity-message">
+                Millions of people around the world are drinking dirty water. As a result, 3,800 lives will be lost today. And again tomorrow. And the day after that. Many of them will be children.
+            </p>
+            <p class="charity-message">
+                It’s a huge problem — but it’s a problem we can solve if we work together. There are lots of great ways to help us end the global water crisis.
+            </p>
+            <p class="charity-message">
+                What matters most is that we choose to do something. Take action today, and save lives.
+            </p>
+        <p>Want to make a difference? Visit <a href="https://www.charitywater.org/take-action" target="_blank" rel="noopener noreferrer external">Charity:Water</a> to donate and help bring clean water to those in need.</p>
         </div>
+    <script src="script.js" defer></script>
+
+    <div class="donation-link">
+        <p>Want to make a difference? Visit <a href="https://www.charitywater.org/take-action" target="_blank" rel="noopener noreferrer">Charity:Water</a> to donate and help bring clean water to those in need.</p>
     </div>
     
     <script src="script.js"></script>
