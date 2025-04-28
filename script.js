@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
   const startGameBtn = document.getElementById('start-game-btn');
+  const restartGameBtn = document.getElementById('restart-game-btn');
   const playAgainBtn = document.getElementById('play-again-btn'); // New button
   const resetBtn = document.getElementById('reset-btn'); // New reset button
   const welcomePrompt = document.getElementById('welcome-prompt');
@@ -20,11 +21,9 @@ document.addEventListener('DOMContentLoaded', () => {
   showWelcomePrompt();
 
   // Start Game
-  startGameBtn.addEventListener('click', (event) => {
-      event.preventDefault(); // Prevent default link behavior if it's a link (not necessary but good practice)
-      console.log('Start game button clicked'); // Debug log
-      hideWelcomePrompt();  // Hide the welcome prompt
-      startGame(); // Start the game
+  startGameBtn.addEventListener('click', () => {
+      hideWelcomePrompt();
+      startGame();
   });
 
   // Play Again (on game over screen)
@@ -34,6 +33,15 @@ document.addEventListener('DOMContentLoaded', () => {
       startGame();
   });
 
+  // Restart Game (optional: you might create a restart button later)
+  if (restartGameBtn) {
+      restartGameBtn.addEventListener('click', () => {
+          hideGameOverPrompt();
+          resetGame();
+          startGame();
+      });
+  }
+
   // Reset Game Button (to reset without starting again)
   if (resetBtn) {
       resetBtn.addEventListener('click', () => {
@@ -41,7 +49,6 @@ document.addEventListener('DOMContentLoaded', () => {
       });
   }
 
-  // Start Game Logic
   function startGame() {
       // Set difficulty settings
       const difficulty = difficultySelect.value;
@@ -64,7 +71,6 @@ document.addEventListener('DOMContentLoaded', () => {
       gameInterval = setInterval(createDrop, intervalSpeed);
   }
 
-  // End Game Logic
   function endGame() {
       gameActive = false;
       clearInterval(gameInterval);
