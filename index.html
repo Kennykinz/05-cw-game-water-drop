@@ -7,42 +7,79 @@
     <link rel="stylesheet" href="styles.css">
     <style>
         :root {
-            --yellow: #FFD700; /* Define yellow color */
-            --black: #000000; /* Define black color */
+            --yellow: #FFD700; /* Charity: Water Yellow */
+            --black: #000000;
+        }
+
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
         }
 
         .donation-link {
             margin-top: 20px;
             text-align: center;
             font-size: 16px;
-            color: var(--black); /* Black text */
-            font-family: 'Arial', sans-serif;
+            color: var(--black);
+            font-family: 'Helvetica Neue', Arial, sans-serif;
         }
 
         .donation-link a {
-            color: var(--yellow); /* Yellow link */
+            color: var(--yellow);
             font-weight: bold;
             text-decoration: none;
             transition: color 0.3s ease;
         }
 
         .donation-link a:hover {
-            color: var(--black); /* Black text on hover */
+            color: var(--black);
+        }
+
+        .difficulty-selector {
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        .difficulty-selector label {
+            margin: 0 10px;
+            font-size: 18px;
+        }
+
+        .cw-logo {
+            width: 150px;
+            display: block;
+            margin: 20px auto;
         }
     </style>
 </head>
 <body>
+
     <div class="game-wrapper">
         <img src="images/cw-logo.jpg" alt="Charity:Water Logo" class="cw-logo">
+
         <h1 class="game-title">Water Drop</h1>
         <p class="game-tagline">Catch the good drops, avoid the bad ones!</p>
+
+        <!-- New Difficulty Selector -->
+        <div class="difficulty-selector">
+            <label for="difficulty">Difficulty:</label>
+            <select id="difficulty">
+                <option value="easy">Easy</option>
+                <option value="normal" selected>Normal</option>
+                <option value="hard">Hard</option>
+            </select>
+        </div>
+
         <div class="score-panel">
             <div class="score">Score: <span id="score">0</span></div>
             <button id="start-btn">Start Game</button>
         </div>
-        
+
         <div id="game-container">
             <div id="message-display"></div>
+            <!-- Water drops will be dynamically added here -->
         </div>
     </div>
 
@@ -67,14 +104,14 @@
             <p class="charity-message">
                 What matters most is that we choose to do something. Take action today, and save lives.
             </p>
-        <p>Want to make a difference? Visit <a href="https://www.charitywater.org/take-action" target="_blank" rel="noopener noreferrer external">Charity:Water</a> to donate and help bring clean water to those in need.</p>
+            <p>Want to make a difference? Visit <a href="https://www.charitywater.org/take-action" target="_blank" rel="noopener noreferrer">Charity:Water</a> to donate and help bring clean water to those in need.</p>
         </div>
-    <script src="script.js" defer></script>
-
-    <div class="donation-link">
-        <p>Want to make a difference? Visit <a href="https://www.charitywater.org/take-action" target="_blank" rel="noopener noreferrer">Charity:Water</a> to donate and help bring clean water to those in need.</p>
     </div>
-    
-    <script src="script.js"></script>
+
+    <footer class="donation-link">
+        <p>Want to make a difference? Visit <a href="https://www.charitywater.org/take-action" target="_blank" rel="noopener noreferrer">Charity:Water</a> to donate and help bring clean water to those in need.</p>
+    </footer>
+
+    <script src="script.js" defer></script>
 </body>
 </html>
