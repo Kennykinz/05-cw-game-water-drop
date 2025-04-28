@@ -9,11 +9,12 @@
         :root {
             --yellow: #FFD700; /* Charity: Water Yellow */
             --black: #000000;
+            --gray: #f5f5f5;
         }
 
         body {
             font-family: 'Helvetica Neue', Arial, sans-serif;
-            background-color: #f5f5f5;
+            background-color: var(--gray);
             margin: 0;
             padding: 0;
         }
@@ -23,7 +24,6 @@
             text-align: center;
             font-size: 16px;
             color: var(--black);
-            font-family: 'Helvetica Neue', Arial, sans-serif;
         }
 
         .donation-link a {
@@ -57,12 +57,14 @@
 <body>
 
     <div class="game-wrapper">
+        <!-- Charity Water Logo -->
         <img src="images/cw-logo.jpg" alt="Charity:Water Logo" class="cw-logo">
 
+        <!-- Game Title and Tagline -->
         <h1 class="game-title">Water Drop</h1>
         <p class="game-tagline">Catch the good drops, avoid the bad ones!</p>
 
-        <!-- New Difficulty Selector -->
+        <!-- Difficulty Selector -->
         <div class="difficulty-selector">
             <label for="difficulty">Difficulty:</label>
             <select id="difficulty">
@@ -72,25 +74,42 @@
             </select>
         </div>
 
-        <div class="score-panel">
-            <div class="score">Score: <span id="score">0</span></div>
-            <button id="start-btn">Start Game</button>
+        <!-- Score and Control Panel -->
+        <div class="score-panel" id="score-panel">
+            <span id="score">0</span>
         </div>
 
+        <button id="start-game-btn">Start Game</button>
+        <button id="reset-btn" class="reset-btn">Reset Game</button>
+        <button id="play-again-btn" class="hidden">Play Again</button>
+
+        <!-- Game Container -->
         <div id="game-container">
             <div id="message-display"></div>
             <!-- Water drops will be dynamically added here -->
         </div>
-    </div>
 
-    <div id="welcome-prompt" class="modal">
-        <div class="modal-content">
-            <h2>Welcome to Water Drop!</h2>
-            <p>charity:water’s mission is to bring clean and safe drinking water to people in developing countries. Play this game to learn more and have fun!</p>
-            <button id="start-game-btn">Start Game</button>
+        <!-- Charity Message Below the Game -->
+        <div class="charity-message">
+            We are partnering with <strong>charity: water</strong> to bring clean and safe drinking water to communities around the world.
+        </div>
+
+        <!-- Donation Link Below the Charity Message -->
+        <div class="donation-link">
+            Want to make a difference? <a href="https://www.charitywater.org/" target="_blank" rel="noopener noreferrer">Visit charity: water</a> to donate and help bring clean water to those in need.
         </div>
     </div>
 
+    <!-- Welcome Modal -->
+    <div id="welcome-prompt" class="modal">
+      <div class="modal-content">
+          <h2>Welcome to Water Drop!</h2>
+          <p>charity: water’s mission is to bring clean and safe drinking water to people in developing countries. Play this game to learn more and have fun!</p>
+          <button id="start-game-btn">Start Game</button>
+      </div>
+  </div>
+
+    <!-- Game Over Modal -->
     <div id="game-over-prompt" class="modal hidden">
         <div class="modal-content">
             <h2>Game Over!</h2>
@@ -105,12 +124,11 @@
                 What matters most is that we choose to do something. Take action today, and save lives.
             </p>
             <p>Want to make a difference? Visit <a href="https://www.charitywater.org/take-action" target="_blank" rel="noopener noreferrer">Charity:Water</a> to donate and help bring clean water to those in need.</p>
+
+            <!-- Add a "Play Again" Button -->
+            <button id="play-again-btn" class="reset-btn">Play Again</button>
         </div>
     </div>
-
-    <footer class="donation-link">
-        <p>Want to make a difference? Visit <a href="https://www.charitywater.org/take-action" target="_blank" rel="noopener noreferrer">Charity:Water</a> to donate and help bring clean water to those in need.</p>
-    </footer>
 
     <script src="script.js" defer></script>
 </body>
