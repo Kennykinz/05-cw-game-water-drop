@@ -22,9 +22,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Start Game
   startGameBtn.addEventListener('click', () => {
-      hideWelcomePrompt();
-      startGame();
-  });
+    console.log('Start Game button clicked'); // Debugging log
+    hideWelcomePrompt();
+    startGame();
+});
 
   // Play Again (on game over screen)
   playAgainBtn.addEventListener('click', () => {
